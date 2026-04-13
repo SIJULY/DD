@@ -45,9 +45,8 @@ wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com
 
 echo -e "\033[32m[2/2] 引擎就绪！即将开始执行静默刷机...\033[0m"
 echo -e "\033[33m🚀 刷机环境配置中，完成后将自动重启并开始安装。\033[0m"
-echo -e "\033[33m⏳ SSH 将立即断开，请等待 15 分钟后重新连接。\033[0m"
+echo -e "\033[33m⏳ 稍后 SSH 将立即断开，请等待 15 分钟后重新连接。\033[0m"
 sleep 4
 
-# 执行底层静默刷机，成功后自动触发重启
-# 这里增加了 -reboot 参数，并追加了 && reboot 指令作为双重保险
-bash InstallNET.sh $os_cmd -pwd "$new_pwd" -reboot && reboot
+# 执行底层静默刷机，成功后利用 && 自动触发重启
+bash InstallNET.sh $os_cmd -pwd "$new_pwd" && reboot
