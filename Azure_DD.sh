@@ -5,14 +5,14 @@ echo "          极简 DD 重装系统助手 (全自动静默版)         "
 echo "======================================================"
 echo -e "\033[31m⚠️ 警告\033[0m：正在执行全自动静默重装，原系统数据将被彻底抹除！"
 echo "目标系统: Debian 12"
-echo "Root密码: 050148Sq$"
+echo "Root密码: Ayou2Mke#65%a1"
 echo "预计花费 10-20 分钟，期间 SSH 会断开。"
 echo "------------------------------------------------------"
 
 # 1. 预设参数，跳过所有交互
 os_cmd="-debian 12"
-# 密码包含特殊字符 $，必须使用单引号赋值，防止 Bash 触发变量解析
-new_pwd='050148Sq$'
+# 密码包含特殊字符，必须使用单引号赋值，防止 Bash 触发变量解析
+new_pwd='Ayou2Mke#65%a1'
 # DD后自动执行的脚本内容（Base64编码格式）
 post_cmd=""
 
@@ -27,7 +27,7 @@ sleep 3
 
 # 3. 执行底层静默刷机，密码变量用双引号包裹
 if [ -n "$post_cmd" ]; then
-    bash InstallNET.sh $os_cmd -pwd "$new_pwd" -cmd "$post_cmd"
+    bash InstallNET.sh $os_cmd -pwd "$new_pwd" -cmd "echo \"$post_cmd\" | base64 -d > /root/post_install.sh && bash /root/post_install.sh"
 else
     bash InstallNET.sh $os_cmd -pwd "$new_pwd"
 fi
