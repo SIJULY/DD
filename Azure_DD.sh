@@ -29,7 +29,9 @@ sleep 3
 
 # 3. 执行底层静默刷机，密码变量用双引号包裹
 if [ -n "$post_cmd" ]; then
-    bash InstallNET.sh $os_cmd -pwd "$new_pwd" -cmd "echo \"$post_cmd\" | base64 -d > /root/post_install.sh && bash /root/post_install.sh"
+    # InstallNET.sh 的 -cmd 参数要求直接传入 Base64 编码的字符串
+    # 重装后系统会自动执行：cat /etc/run.sh | base64 -d > /tmp/run.sh && bash /tmp/run.sh
+    bash InstallNET.sh $os_cmd -pwd "$new_pwd" -cmd "$post_cmd"
 else
     bash InstallNET.sh $os_cmd -pwd "$new_pwd"
 fi
