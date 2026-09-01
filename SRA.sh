@@ -15,17 +15,20 @@ fi
 
 echo ""
 echo "请选择要重装的操作系统："
-echo "  [1] Debian 12 (推荐，极低内存占用)"
-echo "  [2] Ubuntu 20.04 (经典，兼容性极高)"
-echo "  [3] Ubuntu 24.04 (最新，适合新一代环境)"
+echo "  [1] Debian 13 (最新稳定版，推荐)"
+echo "  [2] Debian 12 (经典稳定，兼容性好)"
+echo "  [3] Ubuntu 20.04 (经典长期支持)"
+echo "  [4] Ubuntu 24.04 (适合新一代环境)"
 echo "------------------------------------------------------"
-read -p "请输入对应的序号 (1/2/3): " os_choice
+read -p "请输入对应的序号 (1/2/3/4): " os_choice
 
 if [[ "$os_choice" == "1" ]]; then
-    os_cmd="-debian 12"
+    os_cmd="-debian 13"
 elif [[ "$os_choice" == "2" ]]; then
-    os_cmd="-ubuntu 20.04"
+    os_cmd="-debian 12"
 elif [[ "$os_choice" == "3" ]]; then
+    os_cmd="-ubuntu 20.04"
+elif [[ "$os_choice" == "4" ]]; then
     os_cmd="-ubuntu 24.04"
 else
     echo -e "\033[31m无效的选择，已自动退出。\033[0m"
